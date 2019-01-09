@@ -1,10 +1,11 @@
-!(function(w) {
+!(function(w, mos, s) {
   if (w.AppStarter) {
     return;
   }
+
   var startTime = 2000;
 
-  function mobileOS(userAgent) {
+  var mobileOS = typeof(mos) === 'function' ? mos : function(userAgent) {
     if (userAgent.indexOf('Android') > -1 || userAgent.indexOf('Adr') > -1) {
       return 'android';
     } else if (!!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
@@ -14,11 +15,8 @@
     }
   };
 
-  var os = mobileOS(w.navigator.userAgent);
-
   function getSettings(selector) {
     var element = typeof(selector) === 'string' ? w.document.findElementById(selector) : selector;
-
     return {
       ios: {
         start: element.getAttribute('as:ios-start'),
@@ -52,6 +50,14 @@
     }
   }
 
+  if (typeof(s) === 'object') {
+    for(var key in s) {
+      starter[key] = s;
+    }
+  }
+
+  var os = mobileOS(w.navigator.userAgent);
+
   var AppStarter = {
     start: function(selector) {
       this.startUrls(getSettings(selector));
@@ -63,4 +69,4 @@
 
   w.AppStarter = AppStarter;
 
-})(window);
+})(window, customMobileOS, customStarter);

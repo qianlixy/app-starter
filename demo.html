@@ -7,12 +7,6 @@
   </head>
   <body>
 
-    <input type="button" name="" value="智能车书" onclick="AppStarter.start(this)"
-      as:ios-start="ibuick://carbook"
-      as:ios-download="https://itunes.apple.com/cn/app/ibuick/id550070842?mt=8"
-      as:android-start=" scheme://host/iBuick?ibuick=carbook"
-      as:android-download="https://www.pgyer.com/E66J">
-
     <input type="button" name="" value="高德地图" onclick="AppStarter.start(this)"
       as:ios-start="iosamap://rootmap?sourceApplication=browser"
       as:ios-download="https://itunes.apple.com/cn/app/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE-%E7%B2%BE%E5%87%86%E5%AF%BC%E8%88%AA-%E5%87%BA%E8%A1%8C%E5%BF%85%E5%A4%87/id461703208?mt=8"
@@ -20,12 +14,15 @@
       as:android-download="http://amapdownload.autonavi.com/down6/C3060/Amap_V8.80.0.2855_android_C3060_(Build1812061250).apk">
 
     <input type="button" value="百度地图" onclick="AppStarter.start(this)"
-      as:ios-start="baidumap://map"
-      as:ios-download="https://itunes.apple.com/cn/app/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE-%E7%B2%BE%E5%87%86%E5%AF%BC%E8%88%AA-%E5%87%BA%E8%A1%8C%E5%BF%85%E5%A4%87/id461703208?mt=8"
-      as:android-start="baidumap://map"
-      as:android-download="http://amapdownload.autonavi.com/down6/C3060/Amap_V8.80.0.2855_android_C3060_(Build1812061250).apk">
-    >
+      as:ios-start="baidumap://map" as:android-start="baidumap://map">
 
     <script src="app-starter.js" charset="utf-8"></script>
+    <script src="vconsole.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var vConsole = new VConsole();
+      AppStarter.onUnknown = function() {
+
+      }
+    </script>
   </body>
 </html>
